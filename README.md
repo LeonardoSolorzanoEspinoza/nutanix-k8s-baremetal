@@ -44,12 +44,13 @@ nutanix-k8s-baremetal/
 │   └── topology.md
 ├── docs/
 │   └── screenshots/
-│       ├── 1.- Cluster Dashboard - Nutanix Prism Element.png
-│       ├── 2.- Hardware Diagram - Nutanix Prism Element.png
+│       ├── 1.- Cluster List - Prism Central.png
+│       ├── 2.- SW diagram - Nutanix Prism Element.png
 │       ├── 3.- Storage Diagram - Nutanix Prism Element.png
 │       ├── 4.- VM Table - Nutanix Prism Element.png
 │       ├── 5.- Kubernetes Cluster Status (CLI) - 'One Node added'.png
 │       ├── 6.- Live Workload K8.png
+│       ├── 7.- Status - Prism Central.png
 │       └── README.md
 ├── Preview.md
 ├── tailored project guides/
@@ -89,14 +90,6 @@ nutanix-k8s-baremetal/
 
 ---
 
-## Background
-
-- **Experience:** 8 Years Platform Validation & Integration
-- **Specialty:** Hybrid Platform Engineering (On-Prem + Cloud)
-- **Focus:** Nutanix · Terraform · Ansible · Kubernetes · AWS
-
----
-
 ## Security Notice
 
 > Security-sensitive configuration files (credentials, keys, secrets) are excluded from this repository via `.gitignore`.
@@ -111,11 +104,11 @@ The following screenshots provide evidence that both the Nutanix platform and Ku
 
 1. **Prism Dashboard:** high-level cluster health and alerts overview.
 
-![Nutanix Prism Dashboard](docs/screenshots/1.- Cluster Dashboard - Nutanix Prism Element.png)
+![Nutanix Prism Dashboard](docs/screenshots/1.- Cluster List - Prism Central.png)
 
 2. **Hardware Diagram:** node-level infrastructure visibility and component status.
 
-![Nutanix Hardware Diagram](docs/screenshots/2.- Hardware Diagram - Nutanix Prism Element.png)
+![Nutanix Hardware Diagram](docs/screenshots/2.- SW diagram - Nutanix Prism Element.png)
 
 3. **Storage Diagram:** storage topology and data path health validation.
 
@@ -129,7 +122,7 @@ The following screenshots provide evidence that both the Nutanix platform and Ku
 
 5. **Cluster Status (CLI):** control plane and node join validation from the command line.
 
-![Kubernetes Cluster Status CLI](docs/screenshots/5.- Kubernetes Cluster Status (CLI) - 'One Node added'.png)
+![Kubernetes Cluster Status CLI](docs/screenshots/5.-%20Kubernetes%20Cluster%20Status%20%28CLI%29%20-%20%27One%20Node%20added%27.png)
 
 6. **Live Workload:** workload running on the Kubernetes cluster.
 
