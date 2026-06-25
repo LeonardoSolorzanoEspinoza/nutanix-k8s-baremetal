@@ -88,7 +88,7 @@ ansible-playbook setup-k8s.yml
 
 ---
 
-## Phase 3: CKA Lab 🎓
+## Phase 3: CKA Lab
 
 **Goal:** Build the cluster manually to master the CKA curriculum.
 
@@ -181,11 +181,11 @@ Automate etcd backups to AWS S3.
 
 | Category | Details |
 |---|---|
-| Background | 10 Years Platform Validation & Integration |
-| Specialty | Hybrid Platform Engineering (On-Prem + Cloud) |
+| Background | 8 Years Platform Validation & Integration |
+| Specialty | System Integration/Validation && Hybrid Platform Engineering (On-Prem + Cloud) |
 | Toolbox | Nutanix, Terraform, Ansible, Kubernetes (CKA), AWS (SAA) |
-| Target Salary (GDL) | $110k - $140k MXN Gross/Month |
-| Target Salary (US Remote) | $7k - $9k USD/Month |
+| Target  (GDL) | $ |
+| Target  (US Remote) | $ |
 
 ---
 

@@ -33,15 +33,35 @@ Every phase is documented as a reproducible guide, from provisioning VMs with Te
 
 ```
 nutanix-k8s-baremetal/
+├── .gitignore
 ├── ansible/
-│   └── inventory.yaml
+│   ├── ansible.cfg
+│   ├── fix-hosts.yaml
+│   ├── inventory.ini
+│   └── k8s-prep.yaml
 ├── architecture/
 │   ├── software-matrix.md
 │   └── topology.md
-├── terraform/
-│   └── providers.tf
+├── docs/
+│   └── screenshots/
+│       ├── 1.- Cluster Dashboard - Nutanix Prism Element.png
+│       ├── 2.- Hardware Diagram - Nutanix Prism Element.png
+│       ├── 3.- Storage Diagram - Nutanix Prism Element.png
+│       ├── 4.- VM Table - Nutanix Prism Element.png
+│       ├── 5.- Kubernetes Cluster Status (CLI) - 'One Node added'.png
+│       ├── 6.- Live Workload K8.png
+│       └── README.md
+├── Preview.md
 ├── tailored project guides/
+│   ├── Installation Ubuntu Live Based.md
+│   ├── Phase 1 - Terraform in detail.md
+│   ├── Phase 2 - Ansible.md
 │   └── Phase 3 - Kubeadm installation.md
+├── terraform/
+│   ├── main.tf
+│   ├── providers.tf
+│   ├── terraform.tfvars
+│   └── variables.tf
 └── README.md
 ```
 
@@ -80,6 +100,40 @@ nutanix-k8s-baremetal/
 ## Security Notice
 
 > Security-sensitive configuration files (credentials, keys, secrets) are excluded from this repository via `.gitignore`.
+
+---
+
+## Evidence Screenshots
+
+The following screenshots provide evidence that both the Nutanix platform and Kubernetes cluster are healthy and operational.
+
+### Nutanix Cluster Health Status (1-4)
+
+1. **Prism Dashboard:** high-level cluster health and alerts overview.
+
+![Nutanix Prism Dashboard](docs/screenshots/1.- Cluster Dashboard - Nutanix Prism Element.png)
+
+2. **Hardware Diagram:** node-level infrastructure visibility and component status.
+
+![Nutanix Hardware Diagram](docs/screenshots/2.- Hardware Diagram - Nutanix Prism Element.png)
+
+3. **Storage Diagram:** storage topology and data path health validation.
+
+![Nutanix Storage Diagram](docs/screenshots/3.- Storage Diagram - Nutanix Prism Element.png)
+
+4. **VM Table:** virtual machine inventory and runtime state confirmation.
+
+![Nutanix VM Table](docs/screenshots/4.- VM Table - Nutanix Prism Element.png)
+
+### Kubernetes Cluster Working Evidence (5-6)
+
+5. **Cluster Status (CLI):** control plane and node join validation from the command line.
+
+![Kubernetes Cluster Status CLI](docs/screenshots/5.- Kubernetes Cluster Status (CLI) - 'One Node added'.png)
+
+6. **Live Workload:** workload running on the Kubernetes cluster.
+
+![Kubernetes Live Workload](docs/screenshots/6.- Live Workload K8.png)
 
 ---
 
