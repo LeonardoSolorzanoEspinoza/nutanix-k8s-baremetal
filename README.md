@@ -1,10 +1,10 @@
-# 🖥️ Nutanix Kubernetes Bare-Metal Lab
+# Nutanix Kubernetes Bare-Metal Lab
 
 A fully automated, production-inspired Kubernetes lab built on a physical Nutanix cluster — documenting the complete journey from bare-metal hardware to a monitored, hybrid-cloud Platform Engineering pipeline.
 
 ---
 
-## 📖 About This Repository
+## About This Repository
 
 This repository contains the complete Infrastructure as Code automation for my personal Homelab, built on a 4-node Intel Purley bare-metal cluster running the Nutanix Cloud Platform.
 
@@ -14,7 +14,7 @@ Every phase is documented as a reproducible guide, from provisioning VMs with Te
 
 ---
 
-## 🏗️ Tech Stack
+## Tech Stack
 
 | Layer | Technology |
 |---|---|
@@ -26,22 +26,10 @@ Every phase is documented as a reproducible guide, from provisioning VMs with Te
 | Monitoring | Prometheus & Grafana |
 | Cloud Integration | AWS (S3, hybrid backup) |
 
----
-
-## 📦 Badges
-
-![Nutanix](https://img.shields.io/badge/Nutanix-024DA1?style=flat&logo=nutanix&logoColor=white)
-![Terraform](https://img.shields.io/badge/Terraform-7B42BC?style=flat&logo=terraform&logoColor=white)
-![Ansible](https://img.shields.io/badge/Ansible-EE0000?style=flat&logo=ansible&logoColor=white)
-![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5?style=flat&logo=kubernetes&logoColor=white)
-![AWS](https://img.shields.io/badge/AWS-232F3E?style=flat&logo=amazonaws&logoColor=white)
-![Prometheus](https://img.shields.io/badge/Prometheus-E6522C?style=flat&logo=prometheus&logoColor=white)
-![Grafana](https://img.shields.io/badge/Grafana-F46800?style=flat&logo=grafana&logoColor=white)
-![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?style=flat&logo=ubuntu&logoColor=white)
 
 ---
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```
 nutanix-k8s-baremetal/
@@ -59,7 +47,7 @@ nutanix-k8s-baremetal/
 
 ---
 
-## 🗺️ Lab Phases
+## Lab Phases
 
 | Phase | Guide | Status |
 |---|---|---|
@@ -72,7 +60,7 @@ nutanix-k8s-baremetal/
 
 ---
 
-## 🎯 Target Certifications
+## Target Certifications
 
 | Certification | Provider | Status |
 |---|---|---|
@@ -81,7 +69,7 @@ nutanix-k8s-baremetal/
 
 ---
 
-## 💼 Background
+## Background
 
 - **Experience:** 8 Years Platform Validation & Integration
 - **Specialty:** Hybrid Platform Engineering (On-Prem + Cloud)
@@ -89,13 +77,13 @@ nutanix-k8s-baremetal/
 
 ---
 
-## ⚠️ Security Notice
+## Security Notice
 
 > Security-sensitive configuration files (credentials, keys, secrets) are excluded from this repository via `.gitignore`.
 
 ---
 
-## 📄 License
+## License
 
 This project is for educational and portfolio purposes.
 

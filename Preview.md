@@ -4,7 +4,7 @@
 
 ---
 
-## 📋 Overview
+## Overview
 
 | Detail | Info |
 |---|---|
@@ -15,7 +15,7 @@
 
 ---
 
-## 🗺️ Roadmap Summary
+## Roadmap Summary
 
 ```mermaid
 graph LR
@@ -28,7 +28,7 @@ graph LR
 
 ---
 
-## Phase 1: Infrastructure as Code 🏗️
+## Phase 1: Infrastructure as Code 
 
 **Goal:** Stop using the Prism UI. Manage Intel nodes via code.
 
@@ -52,11 +52,11 @@ Configure the Nutanix provider in Terraform and connect to Prism Element/Central
 terraform apply
 ```
 
-✅ **Validation Checkpoint:** If 4 VMs appear in Prism without clicking "Create VM," you have moved into the modern infrastructure workflow.
+**Validation Checkpoint:** If 4 VMs appear in Prism without clicking "Create VM," you have moved into the modern infrastructure workflow.
 
 ---
 
-## Phase 2: Configuration Management 🔧
+## Phase 2: Configuration Management
 
 **Goal:** Treat VMs like "cattle, not pets." Avoid manual per-node setup.
 
@@ -84,7 +84,7 @@ Disable swap, install containerd, and install `kubeadm`, `kubelet`, and `kubectl
 ansible-playbook setup-k8s.yml
 ```
 
-✅ **Validation Checkpoint:** All nodes are ready for cluster initialization.
+**Validation Checkpoint:** All nodes are ready for cluster initialization.
 
 ---
 
@@ -103,7 +103,7 @@ kubeadm init
 2. Install CNI plugin.
 Options: Calico or Cilium.
 
-> 💡 Expert Tip: Understand why pods cannot communicate before CNI is installed.
+> Expert Tip: Understand why pods cannot communicate before CNI is installed.
 
 3. Join worker nodes.
 
@@ -117,11 +117,11 @@ kubeadm join <control-plane-ip>:6443 --token <token>
 - Fix broken static pods
 - Practice on Killer.sh simulators
 
-✅ **Validation Checkpoint:** Complete Killer.sh simulator with a passing score.
+**Validation Checkpoint:** Complete Killer.sh simulator with a passing score.
 
 ---
 
-## Phase 4: Observability 📊
+## Phase 4: Observability
 
 **Goal:** Leverage validation experience. A platform is not complete until it is monitored.
 
@@ -145,13 +145,13 @@ helm install grafana grafana/grafana
 - Node health metrics
 - Cluster resource utilization
 
-✅ **Validation Checkpoint:** Dashboard shows full-stack visibility from hardware to container.
+ **Validation Checkpoint:** Dashboard shows full-stack visibility from hardware to container.
 
-💼 **Career Value:** Demonstrates full-stack platform ownership from bare metal to Kubernetes workloads.
+ **Career Value:** Demonstrates full-stack platform ownership from bare metal to Kubernetes workloads.
 
 ---
 
-## Phase 5: Cloud Jump ☁️
+## Phase 5: Cloud Jump
 
 **Goal:** Connect the bare-metal environment to AWS.
 
@@ -171,13 +171,13 @@ resource "aws_s3_bucket" "etcd_backup" {
 3. Configure Kubernetes CronJob.
 Automate etcd backups to AWS S3.
 
-✅ **Validation Checkpoint:** etcd backups are automatically stored in AWS S3.
+**Validation Checkpoint:** etcd backups are automatically stored in AWS S3.
 
-🎯 **Pitch:** "I manage a hybrid cloud where on-prem Kubernetes backups are automated to AWS S3 using Terraform and Kubernetes CronJobs."
+**Pitch:** "I manage a hybrid cloud where on-prem Kubernetes backups are automated to AWS S3 using Terraform and Kubernetes CronJobs."
 
 ---
 
-## 💼 2026 Target Profile
+## 2026 Target Profile
 
 | Category | Details |
 |---|---|
@@ -189,7 +189,7 @@ Automate etcd backups to AWS S3.
 
 ---
 
-## ⚠️ Realistic Concerns and Adjustments
+## Realistic Concerns and Adjustments
 
 ### Timeline Expectations
 - This is a 6-12 month journey, not a quick sprint.
@@ -207,7 +207,7 @@ Automate etcd backups to AWS S3.
 
 ---
 
-## 📦 Tech Stack
+## Tech Stack
 
 Nutanix, Terraform, Ansible, Kubernetes, AWS, Prometheus, Grafana
 
