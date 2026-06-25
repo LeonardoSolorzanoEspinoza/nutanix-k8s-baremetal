@@ -1,0 +1,23 @@
+---
+- name: Add short names to hosts file
+  hosts: all
+  become: true
+  tasks:
+    - name: Insert controlplane entry
+      ansible.builtin.lineinfile:
+        path: /etc/hosts
+        line: "192.168.104.57 controlplane"
+    - name: Insert node01 entry
+      ansible.builtin.lineinfile:
+        path: /etc/hosts
+        line: "192.168.104.54 node01"
+
+    - name: Insert node02 entry
+      ansible.builtin.lineinfile:
+        path: /etc/hosts
+        line: "192.168.104.53 node02"
+
+    - name: Insert node03 entry
+      ansible.builtin.lineinfile:
+        path: /etc/hosts
+        line: "192.168.104.55 node03"
