@@ -1,10 +1,10 @@
-# Phase 3: Kubeadm Installation & Cluster Bootstrap 🎓
+# Phase 3: Kubeadm Installation & Cluster Bootstrap
 
 **Goal:** Install Kubernetes binaries on all nodes and bootstrap the cluster manually to master the CKA curriculum.
 
 ---
 
-## 📋 Overview
+## Overview
 
 | Detail | Info |
 |---|---|
@@ -18,7 +18,7 @@
 
 ## Part 1: Install Kubernetes Binaries
 
-> ⚠️ Run these steps on **ALL nodes** (control plane + workers) unless otherwise specified.
+> Run these steps on **ALL nodes** (control plane + workers) unless otherwise specified.
 
 ### Step 1.1 - Update Package Index and Install Prerequisites
 
@@ -42,7 +42,7 @@ curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.35/deb/Release.key | \
   sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
 ```
 
-> ⚠️ **Older Systems Note:** On releases older than Debian 12 or Ubuntu 22.04, the `/etc/apt/keyrings` directory does not exist by default. Always run the `mkdir` command above to be safe.
+> **Older Systems Note:** On releases older than Debian 12 or Ubuntu 22.04, the `/etc/apt/keyrings` directory does not exist by default. Always run the `mkdir` command above to be safe.
 
 ### Step 1.3 - Add Kubernetes APT Repository
 
@@ -54,7 +54,7 @@ https://pkgs.k8s.io/core:/stable:/v1.35/deb/ /' | \
 sudo tee /etc/apt/sources.list.d/kubernetes.list
 ```
 
-> 💡 **Version Note:** This repository contains packages only for Kubernetes v1.35. To install a different version, change the minor version number in the URL: `https://pkgs.k8s.io/core:/stable:/v1.XX/deb/`
+> **Version Note:** This repository contains packages only for Kubernetes v1.35. To install a different version, change the minor version number in the URL: `https://pkgs.k8s.io/core:/stable:/v1.XX/deb/`
 
 ### Step 1.4 - Install Kubernetes Binaries
 
@@ -72,7 +72,7 @@ sudo apt-mark hold kubelet kubeadm kubectl
 | `kubeadm` | Cluster bootstrap tool |
 | `kubectl` | CLI to interact with the cluster |
 
-> 💡 Why pin versions? `apt-mark hold` prevents these packages from being upgraded during a routine `apt upgrade`, which could break your cluster unexpectedly.
+> Why pin versions? `apt-mark hold` prevents these packages from being upgraded during a routine `apt upgrade`, which could break your cluster unexpectedly.
 
 ### Step 1.5 - Enable Kubelet Service
 
@@ -80,12 +80,12 @@ sudo apt-mark hold kubelet kubeadm kubectl
 sudo systemctl enable --now kubelet
 ```
 
-> 📋 Note: The kubelet will enter a crash loop until `kubeadm init` is run. This is expected behavior.
+> Note: The kubelet will enter a crash loop until `kubeadm init` is run. This is expected behavior.
 ---
 
 ## Part 2: Cluster Initialization (Control Plane Only)
 
-> ⚠️ Run these steps on the **CONTROL PLANE** node only.
+> Run these steps on the **CONTROL PLANE** node only.
 
 ### Step 2.1 - Check Network Interface
 
@@ -93,7 +93,7 @@ sudo systemctl enable --now kubelet
 ip route show
 ```
 
-> 💡 Use this to identify your active network interface name (e.g., `eth0`, `ens3`, `enp3s0`) before running `kubeadm init`.
+> Use this to identify your active network interface name (e.g., `eth0`, `ens3`, `enp3s0`) before running `kubeadm init`.
 
 ### Step 2.2 - Pod Network CIDR Golden Rules
 
@@ -152,11 +152,11 @@ kubeadm join <CONTROLPLANE-IP>:6443 \
   --discovery-token-ca-cert-hash sha256:<CA-CERT-HASH>
 ```
 
-> ⚠️ **Security Note:** This token expires after 24 hours. Generate a new one if needed.
+> **Security Note:** This token expires after 24 hours. Generate a new one if needed.
 
 ### Step 3.2 - Join Worker Nodes
 
-> ⚠️ Run on each **WORKER NODE** (node01, node02, node03). Copy the exact command output from Step 3.1.
+> Run on each **WORKER NODE** (node01, node02, node03). Copy the exact command output from Step 3.1.
 
 ```bash
 kubeadm join <CONTROLPLANE-IP>:6443 \
@@ -172,7 +172,7 @@ Run on control plane:
 kubectl get nodes
 ```
 
-✅ Expected Output:
+Expected Output:
 
 ```
 NAME           STATUS   ROLES           AGE   VERSION
@@ -184,13 +184,13 @@ node03         Ready    <none>          Xm    v1.35.x
 
 ---
 
-## ✅ Phase 3 Completion Checklist
+## Phase 3 Completion Checklist
 
 - [ ] Kubernetes binaries installed on all nodes
-- [ ] Versions pinned with `apt-mark hold`
-- [ ] `kubeadm init` completed on control plane
+- [x] Versions pinned with `apt-mark hold`
+- [x] `kubeadm init` completed on control plane
 - [ ] Worker nodes joined successfully
-- [ ] All nodes show `Ready` status
+- [x] All nodes show `Ready` status
 
 ---
 

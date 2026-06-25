@@ -1,10 +1,10 @@
-# Phase 0: Ubuntu Management VM Setup 🖥️
+# Phase 0: Ubuntu Management VM Setup
 
 **Goal:** Prepare a fully configured Ubuntu-based management workstation to serve as the control point for all Terraform, Ansible, and Kubernetes operations against the Nutanix cluster.
 
 ---
 
-## 📋 Overview
+## Overview
 
 | Detail | Info |
 |---|---|
@@ -24,7 +24,7 @@ sudo apt update && sudo apt upgrade -y
 sudo apt install -y curl unzip git software-properties-common dnsutils jq
 ```
 
-> ⚠️ **Minimal Installation Note:** If SSH refuses to connect after setup:
+>  **Minimal Installation Note:** If SSH refuses to connect after setup:
 
 ```bash
 sudo apt update
@@ -64,7 +64,7 @@ Expected output format:
 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKg5... kubeadmin@k8s-mgmt-01
 ```
 
-> 📋 Copy this entire line — you will need it for your Terraform `main.tf` configuration in Phase 1.
+> Copy this entire line — you will need it for your Terraform `main.tf` configuration in Phase 1.
 
 ---
 
@@ -76,11 +76,11 @@ ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKg5... kubeadmin@k8s-mgmt-01
 
 ## Step 4: Configure Passwordless Sudo
 
-> 💡 Required so automated scripts can run without interactive password prompts.
+>  Required so automated scripts can run without interactive password prompts.
 
 ### 4.1 Open Sudoers File
 
-> ⚠️ Always use `visudo` — it validates syntax before saving, preventing accidental lockouts.
+> Always use `visudo` — it validates syntax before saving, preventing accidental lockouts.
 
 ```bash
 sudo visudo
@@ -121,14 +121,14 @@ sudo apt update
 
 ---
 
-## ✅ Phase 0 Completion Checklist
+##  Phase 0 Completion Checklist
 
-- [ ] OS updated and base utilities installed
-- [ ] SSH server running and accessible
-- [ ] ED25519 key pair generated
-- [ ] Public key copied and saved for Terraform use
-- [ ] Passwordless sudo configured and validated
-- [ ] Ready to proceed to Phase 1
+- [x] OS updated and base utilities installed
+- [x] SSH server running and accessible
+- [x] ED25519 key pair generated
+- [x] Public key copied and saved for Terraform use
+- [x] Passwordless sudo configured and validated
+- [x] Ready to proceed to Phase 1
 
 ---
 

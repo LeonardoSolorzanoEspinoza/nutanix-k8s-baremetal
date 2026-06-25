@@ -1,10 +1,10 @@
-# Phase 1: Terraform Provisioning 🏗️
+# Phase 1: Terraform Provisioning
 
 **Goal:** Stop using the Prism UI. Deploy and manage Kubernetes VMs on your Nutanix cluster using Infrastructure as Code.
 
 ---
 
-## 📋 Overview
+## Overview
 
 | Detail | Info |
 |---|---|
@@ -35,7 +35,7 @@ sudo apt update && sudo apt install -y gnupg software-properties-common curl
 wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
 ```
 
-> 💡 Why? Linux needs to trust the source of the code before installing it.
+> Why? Linux needs to trust the source of the code before installing it.
 
 | Flag | Purpose |
 |---|---|
@@ -49,16 +49,16 @@ https://apt.releases.hashicorp.com $(lsb_release -cs) main" | \
 sudo tee /etc/apt/sources.list.d/hashicorp.list
 ```
 
-> 💡 Why? By default, Ubuntu only knows about its own software. This tells your system to also check HashiCorp's servers for Terraform.
+> Why? By default, Ubuntu only knows about its own software. This tells your system to also check HashiCorp's servers for Terraform.
 
-> 📋 Note: `$(lsb_release -cs)` automatically detects your Ubuntu version (e.g., `noble`) so you don't have to type it manually.
+> Note: `$(lsb_release -cs)` automatically detects your Ubuntu version (e.g., `noble`) so you don't have to type it manually.
 ### Step 1.4 - Install Terraform
 
 ```bash
 sudo apt update && sudo apt install terraform -y
 ```
 
-> ⚠️ **Important:** You must run `apt update` again so Ubuntu can see the new packages available in the HashiCorp repository.
+> **Important:** You must run `apt update` again so Ubuntu can see the new packages available in the HashiCorp repository.
 
 ### Step 1.5 - Verify Installation
 
@@ -86,7 +86,7 @@ curl -k -u "admin:<YOUR-PASSWORD>" \
 ```
 ### 2.2 - Terraform State File
 
-> ⚠️ **Critical:** Terraform keeps a state file `terraform.tfstate` that remembers everything it built.
+> **Critical:** Terraform keeps a state file `terraform.tfstate` that remembers everything it built.
 
 | Rule | Reason |
 |---|---|
@@ -107,7 +107,7 @@ terraform.tfvars
 
 ### 2.3 - Environment Variables (Security Best Practice)
 
-> 🔒 Never hardcode credentials in your Terraform files. Set them as environment variables in your terminal session:
+> Never hardcode credentials in your Terraform files. Set them as environment variables in your terminal session:
 
 ```bash
 export NUTANIX_USERNAME='admin'
@@ -119,7 +119,7 @@ export NUTANIX_ENDPOINT='<YOUR-PRISM-IP>'
 
 ## Part 3: Gathering Nutanix Identifiers
 
-> 💡 Terraform uses UUIDs internally, not friendly names like "Default-Network" or "Ubuntu-Image". You need to retrieve these from your Prism console before writing your Terraform files.
+> Terraform uses UUIDs internally, not friendly names like "Default-Network" or "Ubuntu-Image". You need to retrieve these from your Prism console before writing your Terraform files.
 
 ### Required UUIDs
 
@@ -135,7 +135,7 @@ export NUTANIX_ENDPOINT='<YOUR-PRISM-IP>'
 ubuntu-24.04-server-cloudimg-amd64.img
 ```
 
-> 💡 Use the Generic Cloud Image for a clean, functional cluster that mirrors standard learning environments.
+> Use the Generic Cloud Image for a clean, functional cluster that mirrors standard learning environments.
 
 ### 3.2 - Retrieve Image UUID
 
@@ -147,7 +147,7 @@ curl -k -u 'admin:<YOUR-PASSWORD>' \
   -d '{"kind": "image"}' | jq
 ```
 
-> 📋 How to read the output: Look for your Ubuntu 24.04 image name and grab the `uuid` string next to it. Example format: `550e8400-e29b-41d4-a716-446655440000`
+> How to read the output: Look for your Ubuntu 24.04 image name and grab the `uuid` string next to it. Example format: `550e8400-e29b-41d4-a716-446655440000`
 
 ### 3.3 - Retrieve Cluster UUID
 
@@ -210,13 +210,13 @@ terraform plan
 terraform apply
 ```
 
-> ⚠️ Review the `terraform plan` output carefully before typing `yes` on `terraform apply`.
+> Review the `terraform plan` output carefully before typing `yes` on `terraform apply`.
 
 ---
 
 ## Part 6: Tear Down and Rebuild
 
-> 💡 Cloud-Init scripts only execute on the first boot of a virtual disk. If you modify cloud-init config, you must destroy and recreate the VMs.
+> Cloud-Init scripts only execute on the first boot of a virtual disk. If you modify cloud-init config, you must destroy and recreate the VMs.
 
 ### 6.1 - Destroy Existing VMs
 
@@ -263,19 +263,19 @@ ssh ubuntu@<NODE03-IP>
 
 ---
 
-## ✅ Phase 1 Completion Checklist
+## Phase 1 Completion Checklist
 
-- [ ] Terraform installed and verified
-- [ ] Prism connectivity confirmed
-- [ ] All UUIDs retrieved (Cluster, Subnet, Image)
-- [ ] `variables.tf` configured with your values
-- [ ] `providers.tf` configured
-- [ ] `main.tf` configured
-- [ ] `terraform init` completed successfully
-- [ ] `terraform plan` reviewed
-- [ ] `terraform apply` completed - 4 VMs visible in Prism
-- [ ] SSH access confirmed to all nodes
-- [ ] Ready to proceed to Phase 2
+- [x] Terraform installed and verified
+- [x] Prism connectivity confirmed
+- [x] All UUIDs retrieved (Cluster, Subnet, Image)
+- [x] `variables.tf` configured with your values
+- [x] `providers.tf` configured
+- [x] `main.tf` configured
+- [x] `terraform init` completed successfully
+- [x] `terraform plan` reviewed
+- [x] `terraform apply` completed - 4 VMs visible in Prism
+- [x] SSH access confirmed to all nodes
+- [x] Ready to proceed to Phase 2
 
 ---
 

@@ -1,10 +1,10 @@
-# Phase 2: Ansible Configuration Management 🔧
+# Phase 2: Ansible Configuration Management
 
 **Goal:** Treat your VMs like "cattle, not pets." Configure all Kubernetes prerequisites across all nodes simultaneously — no individual SSH installs.
 
 ---
 
-## 📋 Overview
+## Overview
 
 | Detail | Info |
 |---|---|
@@ -37,7 +37,7 @@ ansible --version
 
 ## Step 2: Set Up Project Directory
 
-> 💡 Keep Ansible files separate from your Terraform state for a clean workspace.
+> Keep Ansible files separate from your Terraform state for a clean workspace.
 
 ```bash
 # Create Ansible project directory
@@ -85,10 +85,10 @@ ansible_user=ubuntu
 ansible_ssh_private_key_file=~/.ssh/id_ed25519
 ```
 
-> 💡 Why this format? By defining hostnames (`controlplane`, `node01`, etc.) on the left side of `ansible_host`, Ansible automatically uses these labels internally during playbook runs.
+> Why this format? By defining hostnames (`controlplane`, `node01`, etc.) on the left side of `ansible_host`, Ansible automatically uses these labels internally during playbook runs.
 ## Step 4: Disable Strict Host Key Checking
 
-> 💡 **Lab Pro-Tip:** New VMs will trigger SSH's "Are you sure you want to continue connecting?" prompt. Ansible will freeze if it hits this. Bypass it safely for your trusted lab environment.
+> **Lab Pro-Tip:** New VMs will trigger SSH's "Are you sure you want to continue connecting?" prompt. Ansible will freeze if it hits this. Bypass it safely for your trusted lab environment.
 
 ```bash
 nano ansible.cfg
@@ -112,7 +112,7 @@ Before writing any playbooks, verify Ansible can reach all four nodes and elevat
 ansible k8s_cluster -m ping -b
 ```
 
-✅ Expected Result: Green `pong` response from all 4 nodes. The `-b` flag means "become root" (sudo escalation).
+Expected Result: Green `pong` response from all 4 nodes. The `-b` flag means "become root" (sudo escalation).
 
 ---
 
@@ -128,7 +128,7 @@ ansible k8s_cluster -m ping -b
 ansible-playbook k8s-prep.yaml
 ```
 
-✅ **Success Criteria:** Terminal returns with recap showing `failed=0` on all nodes.
+**Success Criteria:** Terminal returns with recap showing `failed=0` on all nodes.
 
 All nodes are now staged and ready for:
 - Container runtime installation (containerd)
@@ -138,13 +138,13 @@ All nodes are now staged and ready for:
 
 ## Step 8: DNS Pre-Solution (Fix /etc/hosts)
 
-> 💡 Before initializing the cluster, ensure all nodes can resolve each other by short hostname. This prevents kubeadm join failures.
+> Before initializing the cluster, ensure all nodes can resolve each other by short hostname. This prevents kubeadm join failures.
 
 ### 8.1 - Create the Hosts File Playbook
 
 > Go to `/ansible`
 
-> ⚠️ Verify the IP addresses match your `inventory.ini` before running.
+> Verify the IP addresses match your `inventory.ini` before running.
 
 ### 8.2 - Run the Playbook
 
@@ -156,7 +156,7 @@ ansible-playbook -i inventory.ini fix-hosts.yaml
 
 ## Step 9: Configure SSH Between Nodes
 
-> 💡 Required so kubeadm can communicate between the control plane and worker nodes during cluster initialization.
+> Required so kubeadm can communicate between the control plane and worker nodes during cluster initialization.
 
 ### 9.1 - Generate SSH Key on Control Plane
 
@@ -180,7 +180,7 @@ Expected output format:
 ssh-ed25519 <YOUR-CONTROLPLANE-PUBLIC-KEY> ubuntu@controlplane
 ```
 
-> 📋 Copy the entire line — you will need it in the next step.
+> Copy the entire line — you will need it in the next step.
 
 ### 9.3 - Distribute Key to All Nodes via Ansible
 
@@ -192,7 +192,7 @@ ansible all -i inventory.ini \
   -a "user=ubuntu state=present key='<PASTE-YOUR-CONTROLPLANE-PUBLIC-KEY-HERE>'"
 ```
 
-✅ Result: The control plane can now SSH into all worker nodes without a password prompt — required for kubeadm.
+Result: The control plane can now SSH into all worker nodes without a password prompt — required for kubeadm.
 
 ---
 
